@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+
+<%- include('Header.ejs') %>
+
+<div class="profile-wrapper">
+
+  <div class="profile-card">
+
+    <!-- PROFILE IMAGE -->
+    <div class="profile-image">
+      <img 
+        src="<%= user.profilepic || 'https://via.placeholder.com/150' %>" 
+        alt="Profile Image"
+      >
+    </div>
+
+    <!-- USER INFO -->
+    <h2 class="username"><%= user.username || 'User' %></h2>
+    <p class="email"><%= user.mail || 'No email available' %></p>
+
+    <!-- ACTIONS -->
+    <div class="profile-actions">
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

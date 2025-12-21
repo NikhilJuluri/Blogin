@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Posts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="allposts.css" />
+</head>
+
+<body>
+
+  <%- include('Header.ejs') %>
+
+  <!-- TOP SECTION -->
+  <section class="top">
+    <p class="page-label">All Posts</p>
+
+    <h2 class="welcome">
+      All Users <span>Stories</span>
+    </h2>
+
+    <p class="subtext">
+      Browse blogs published by all users
+    </p>
+  </section>
+
+  <!-- STORIES -->
+  <main class="stories">
+    <% if (Posts && Posts.length > 0) { %>
+      <% let i = 1; %>
+
+      <% Posts.forEach(item => { %>
+        <% if (item.title && item.date) { %>
+
+          <article class="story-card">
+
+            <div class="story-meta">
+              <span class="story-no"><%= i++ %></span>
+
+              <% if (item.status === 'private') { %>
+                <span class="story-status private">private</span>
+              <% } else { %>
+                <span class="story-status public">public</span>
+              <% } %>
+
+              <span class="story-date"><%= item.date %></span>
+            </div>
+
+            <h3 class="story-title"><%= item.title %></h3>
+
+
+    <% if(item.username === user){%> 
+                    <p class="story-user"> 
+       by <span><%= 'You' || 'Unknown' %></span>
+            </p>
+    <% } else { %>
+          <p class="story-user"> 
+       by <span><%= item.username || 'Unknown' %></span>
+            </p>
+    <% } %>
+            
+          </article>
+
+        <% } %>
+      <% }) %>
+
+    <% } else { %>
+      <p class="empty">No posts available</p>
+    <% } %>
+  </main>
+
+</body>
+</html>

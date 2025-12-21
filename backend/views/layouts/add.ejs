@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add.css">
+</head>
+<body>
+
+<%- include('Header.ejs') %>
+
+<div class="add-wrapper">
+  <div class="add-card">
+
+    <h3 class="add-title">Add New Story</h3>
+    <p class="add-subtext">Share your thoughts with clarity</p>
+
+    <form action="/add" method="POST" class="add-form">
+
+      <!-- TITLE -->
+      <label>Title</label>
+      <input
+        type="text"
+        name="title"
+        placeholder="Enter story title"
+        required
+      >
+
+      <!-- DESCRIPTION -->
+      <label>Description</label>
+      <textarea
+        name="description"
+        placeholder="Write your story here..."
+        required
+      ></textarea>
+
+      <!-- STATUS -->
+      <label>Visibility</label>
+      <select name="status" class="status-select">
+        <option value="private" selected>Private</option>
+        <option value="public">Public</option>
+      </select>
+
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Add Story</button>
+        <a href="/dashboard" class="btn-cancel">Cancel</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>

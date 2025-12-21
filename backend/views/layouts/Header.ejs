@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Header</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Header.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container">
+
+    <!-- Brand -->
+    <a href="/" class="brand">
+      BLOG<span>in</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="opts">
+      <a href="/allPost">Home</a>
+      <a href="/Dashboard">Dashboard</a>
+    </nav>
+
+    <!-- Profile -->
+    <div class="profile">
+  <a href="/profile"><img 
+  src="<%= user.profilepic ||'https://i.pravatar.cc/150' %>" alt="Profile">
+      > </a>
+    </div>
+
+  </div>
+</header>
+
+</body>
+</html>

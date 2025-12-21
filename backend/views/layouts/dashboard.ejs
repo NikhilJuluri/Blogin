@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+
+  <%- include('Header.ejs') %>
+
+  <!-- TOP SECTION -->
+  <section class="top">
+    <p class="page-label">Dashboard</p>
+
+    <h2 class="welcome">
+      Welcome, <span><%= Data?.[0]?.username || "User" %></span>
+    </h2>
+
+    <p class="subtext">Your stories appear below</p>
+  </section>
+
+  <!-- STORIES -->
+  <main class="stories">
+    <% if (Data && Data.length > 0) { %>
+      <% let i = 1; %>
+
+      <% Data.forEach(item => { %>
+        <% if (item.title && item.date) { %>
+
+          <article class="story-card">
+            <div class="story-meta">
+              <span class="story-no"><%= i++ %></span>
+
+              <% if (item.status === 'private') { %>
+                <span class="story-status private">private</span>
+              <% } else { %>
+                <span class="story-status public">public</span>
+              <% } %>
+
+              <span class="story-date"><%= item.date %></span>
+            </div>
+
+            <h3 class="story-title"><%= item.title %></h3>
+          </article>
+
+        <% } else { %> 
+        <p class="empty">No stories yet</p>
+         <% } %>
+      <% }) %>
+    <% } else { %> 
+          <p class="empty">No stories yet</p>
+    <% } %>
+  </main>
+
+  <!-- ADD BUTTON -->
+  <a href="/add" class="add-btn">+</a>
+
+</body>
+</html>
