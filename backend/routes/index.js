@@ -48,7 +48,6 @@ router.get("/auth/google/callback",
 }); 
   
 router.get("/allPost",authentication,async (req, res) => { 
-   
    let result = await Db.query(
   "SELECT * FROM user_posts WHERE status = $1",["public"]
 );
