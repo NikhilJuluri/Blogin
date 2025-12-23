@@ -12,7 +12,8 @@ passport.use(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL:"https://blogin-bl89.onrender.com/auth/google/callback",
     }, 
-    
+     
+   // console.log()
    async (accessToken, refreshToken, profile, done) => {  
       let findingUser = 
        await Db.query("SELECT * FROM googleuserdata WHERE google_id = $1",[profile.id]); 
